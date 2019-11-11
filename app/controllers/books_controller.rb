@@ -2,16 +2,15 @@ class BooksController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   
   def index
-    #@books = Book.all
     @books = Book.order("name").page(params[:page]).per(3)
   end
 
   def new 
-    @books = Book.new              
+    @book = Book.new              
   end
 
   def create
-    current_user.books.create(place_params)
+    @book = current_user.books.create(book_params)
     redirect_to root_path
   end
 
