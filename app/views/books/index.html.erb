@@ -5,6 +5,10 @@
     <p1><%= book.description %></p1><br />
     <p2><%= book.genre %></p2><br />
     <p3><%= book.pub_date %></p3><br />
+
+    <% if book.user.present? %>
+      <small><%= book.user.email %></small>
+    <% end %>
   </div>
 
   <hr />
